@@ -35,7 +35,8 @@ def get_libcarla_extensions():
         import distro
 
         linux_distro = distro.linux_distribution()[0]
-        if linux_distro.lower() in ["ubuntu", "debian", "deepin"]:
+        print(linux_distro)
+        if linux_distro.lower() in ["ubuntu", "debian", "deepin", "opal-rtlinux"]:
             pwd = os.path.dirname(os.path.realpath(__file__))
             pylib = "libboost_python%d%d.a" % (sys.version_info.major,
                                                sys.version_info.minor)
@@ -60,7 +61,7 @@ def get_libcarla_extensions():
                 '-Wdeprecated', '-Wno-shadow', '-Wuninitialized', '-Wunreachable-code',
                 '-Wpessimizing-move', '-Wold-style-cast', '-Wnull-dereference',
                 '-Wduplicate-enum', '-Wnon-virtual-dtor', '-Wheader-hygiene',
-                '-Wconversion', '-Wfloat-overflow-conversion',
+                '-Wfloat-overflow-conversion',
                 '-DBOOST_ERROR_CODE_HEADER_ONLY', '-DLIBCARLA_WITH_PYTHON_SUPPORT'
             ]
             if is_rss_variant_enabled():
